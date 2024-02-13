@@ -1,13 +1,50 @@
-# Challenge React.js ![](https://pasteboard.co/byC31Sq5OMgz.png)
+# React Challenge Project
 
-1. 1. Fork this public repository ([https://github.com/sebasworkana/react-challenge.git](https://github.com/sebasworkana/react-challenge.git) ), and create a new branch with the name React-Challenge-"Name and Last Name", then push it to the created branch and give access to us to review the code.
-2. The main challenge is that you create a Page with the following Style and format.
-![alt text](https://imageupload.io/en/jfSVositjWovwnf)
+This is a React with TypeScript project developed for the React Challenge.
 
-1. You need to enumerate all Periodic table of the elements on CSS class and make use of it, matching words in First name and last name "Highlighting" them as in the image.
-2. First, install "react-redux", then use the useDispatch and useSelector react-redux hooks in the components.
-3. For this challenge use redux-thunk in it. Moreover, use the react-redux hooks to give a better impression and avoid older techniques. Share data among components without using props.
-4. Is mandatory to use linter like ESLINT
-5. Create npm scripts to run project and make sure to create a readme with instructions to run project
-6. Will be valuable if you can create Docker compose file to run all environment
-7. Use github pages to host web app and test
+## How to start the System
+
+### Using npm (Local)
+
+Make sure you have Node.js(>=14.0.0) installed on your machine.
+
+1. **Installation of Dependencies:**
+
+   ```
+   npm install
+   ```
+
+2. **Start the Development Server:**
+
+```
+npm start
+```
+
+3. **The application will be available at http://localhost:3000.**
+
+### Using Docker
+
+**Make sure you have Docker installed on your machine.**
+
+1. Build the Image and Start the Container:
+
+```
+docker-compose up --build
+```
+
+- This will create the container image, start the container, and your React app will be accessible at http://localhost:3000.
+
+- To terminate the container, you can press Ctrl + C in the terminal where the container is running, or run:
+
+```
+docker-compose down
+```
+
+- This will terminate the container.
+
+# Project Structure
+
+- src/: Contains the React project source code files.
+- public/: Contains the public files of the React project.
+- docker-compose.yml: Docker Compose configuration file to run the application with Docker.
+- Dockerfile: Docker configuration file to build the container image.
