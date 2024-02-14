@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { getFormVal } from "../reducers/selector";
 import { PeriodicForm } from "../reducers/text-reducer";
 
-const Breakify = () => {
+const NamesToBreakify = () => {
   const formData: PeriodicForm = useSelector(getFormVal);
 
   const elementsList = [
@@ -56,4 +56,4 @@ const Breakify = () => {
   );
 };
 
-export default Breakify;
+export default NamesToBreakify;

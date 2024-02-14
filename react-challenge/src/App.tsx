@@ -1,5 +1,5 @@
 import "./App.css";
-import Breakify from "./components/breaking-bad-text";
+import NamesToBreakify from "./components/breaking-bad-text";
 import FormNames from "./components/form-input";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     
     <main className="main_wrapper">
       <section className="form_container">
-        <Breakify />
+        <NamesToBreakify />
         <FormNames/>
       </section>
       </main>
