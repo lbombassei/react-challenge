@@ -1,42 +1,59 @@
 import { useSelector } from "react-redux";
-import styled from "styled-components";
+import { getFormVal } from "../reducers/selector";
+import { PeriodicForm } from "../reducers/text-reducer";
 
-interface BreakingBadTextProps {}
+const Breakify = () => {
+  const formData: PeriodicForm = useSelector(getFormVal);
 
-const Text = styled.h1`
-    color: white;
-    font-size: 48px;
-    font-family: monospace;
-    position: relative;
-    display: inline-block;
-    z-index: 9999;
-    margin-bottom: 0;
-    margin-top: 8px;
-`;
-
-const Square = styled.span`
-    position: absolute;
-    display: inline-block;
-    width: 2ch;
-    height: 100%;
-    background-color: #055036;
-    z-index: -1;
-`;
+  const elementsList = [
+    "H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar",
+    "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br",
+    "Kr", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te",
+    "I", "Xe", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm"
+  ];
 
 
-export default function BreakingBadText(params: BreakingBadTextProps) {
 
-    const firstName  = useSelector((state: { firstName: string }) => state.firstName );
-    const lastName = useSelector((state: { lastName: string }) => state.lastName);
-    
-    return (
-        <>
-            <Text>
-                <Square />{firstName}
-            </Text>
-            <Text>
-                <Square />{lastName}
-            </Text>
-        </>
-    );
-}
+  const findFirstMatch = (name: string) => {
+    let highlightedName = name;
+  
+    for (let i = 0; i < name.length - 1; i++) {
+      const element = name.substring(i, i + 2);
+      if (elementsList.includes(element)) {
+        highlightedName =
+          highlightedName.substring(0, i) +
+          `<span class="title_highlight">${highlightedName.substring(
+            i,
+            i + 2
+          )}</span>` +
+          highlightedName.substring(i + 2);
+        return highlightedName;
+      }
+    }
+  
+    for (let i = 0; i < name.length; i++) {
+      if (elementsList.includes(name[i])) {
+        highlightedName =
+          highlightedName.substring(0, i) +
+          `<span class="title_highlight">${name[i]}</span>` +
+          highlightedName.substring(i + 1);
+        return highlightedName;
+      }
+    }
+  
+    return highlightedName;
+  };
+  
+
+  const highlightedFirstname = findFirstMatch(formData.firstname);
+  const highlightedLastname = findFirstMatch(formData.lastname);
+
+  return (
+    <div className="breakify_name">
+      <h1 dangerouslySetInnerHTML={{ __html: highlightedFirstname }} className="breakify_title"></h1>
+      <h1 dangerouslySetInnerHTML={{ __html: highlightedLastname }} className="breakify_title"></h1>
+    </div>
+  );
+};
+
+export default Breakify;

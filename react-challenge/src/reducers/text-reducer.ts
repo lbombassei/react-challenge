@@ -1,22 +1,23 @@
-const initialState = {
-  firstName: "Breaking",
-  lastName: "Bad",
+export interface PeriodicForm {
+  firstname: string;
+  lastname: string;
+}
+
+const initialState: PeriodicForm = {
+  firstname: "Breaking",
+  lastname: "Bad",
 };
 
-const textReducer = (
-  state = initialState,
-  action: { type: any; payload: any }
-) => {
+const rootReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case "UPDATE_TEXT":
+    case "SET_FORM_STATE":
       return {
         ...state,
-        firstName: action.payload.firstName,
-        lastName: action.payload.lastName,
+        ...action.payload,
       };
     default:
       return state;
   }
 };
 
-export default textReducer;
+export default rootReducer;

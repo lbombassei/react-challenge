@@ -1,17 +1,19 @@
-import './App.css';
-import BreakingBadText from './components/breaking-bad-text';
-import NameInputs from './components/name-inputs';
-import { Provider } from 'react-redux';
-import store from './store';
+import "./App.css";
+import Breakify from "./components/breaking-bad-text";
+import FormNames from "./components/form-input";
 
 function App() {
+  
+
   return (
-    <Provider store={store}>
-      <div className="App">
-        <BreakingBadText />
-        <NameInputs />
-      </div>
-    </Provider>
+    
+    <main className="main_wrapper">
+      <section className="form_container">
+        <Breakify />
+        <FormNames/>
+      </section>
+      </main>
+      
   );
 }
 
