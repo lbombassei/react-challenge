@@ -8,6 +8,7 @@ const initialState: PeriodicForm = {
   lastname: "Bad",
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const rootReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case "SET_FORM_STATE":
